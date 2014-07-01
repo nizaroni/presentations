@@ -292,6 +292,61 @@ console.log(thing2.greeting); // "Hello, sir."
 ---
 
 
+Basic module patterns
+---------------------
+
+Expose a function.
+
+```js
+// do-stuff.js
+
+function doStuff (thing) {
+    return 'Stuff done with ' + thing + '!';
+}
+
+module.exports = doStuff;
+```
+
+```js
+// Your program
+
+var doStuff = require('./do-stuff');
+
+console.log(doStuff('thing'));  // "Stuff done with thing!"
+```
+
+----
+
+Basic module patterns
+---------------------
+
+Expose a "namespace" object.
+
+```js
+// stuff.js
+
+var stuff = {};
+stuff.version = '0.0.1';
+stuff.do = function (thing) {
+    return 'Stuff done with ' + thing + '!';
+};
+
+module.exports = stuff;
+```
+
+```js
+// Your program
+
+var stuff = require('./stuff');
+
+console.log(stuff.version);      // 0.0.1
+console.log(stuff.do('thing'));  // "Stuff done with thing!"
+```
+
+
+---
+
+
 Now let's get to coding...
 --------------------------
 

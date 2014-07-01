@@ -146,3 +146,21 @@ console.log(kirbyDance(4)); // "<('.'<) (>'.')> <('.'<) (>'.')>"
 
 Let's get to coding...
 ----------------------
+
+
+---
+
+
+Good job!
+---------
+
+Now help me make it better! Send me some pull requests!
+
+
+---
+
+Modules 101
+===========
+
+[Thanks for listening!](https://www.npmjs.org/~khalifenizar)
+------------------------------------------------------------

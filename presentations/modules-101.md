@@ -86,7 +86,21 @@ How easy is it?
 It's really really easy
 -----------------------
 
-*So easy*, in fact, that we are about to make one and publish it to `npm`.
+Two weeks ago I had *zero* modules in `npm`.
+
+----
+
+It's really really easy
+-----------------------
+
+Now I have [two whole modules](https://www.npmjs.org/~khalifenizar)!
+
+----
+
+It's really really easy
+-----------------------
+
+*It's so easy*, in fact, that we are about to make one and publish it to `npm`.
 
 
 ---

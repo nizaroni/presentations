@@ -292,8 +292,8 @@ console.log(thing2.greeting); // "Hello, sir."
 ---
 
 
-Let's get to coding...
-----------------------
+Now let's get to coding...
+--------------------------
 
 
 ---

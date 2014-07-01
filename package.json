@@ -6,10 +6,16 @@
   "bugs": {
     "url": "https://github.com/khalifenizar/presentations/issues"
   },
+  "dependencies": {
+    "reveal-md": "0.0.12"
+  },
   "homepage": "https://github.com/khalifenizar/presentations",
   "license": "ISC",
   "repository": {
     "type": "git",
     "url": "https://github.com/khalifenizar/presentations.git"
+  },
+  "scripts": {
+    "start": "reveal-md presentations/"
   }
 }

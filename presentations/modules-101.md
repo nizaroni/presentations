@@ -307,6 +307,18 @@ Now help me make it better! Send me some pull requests!
 
 ---
 
+
+Further reading
+---------------
+
+- Post from the Node team about userland: https://github.com/joyent/node/wiki/node-core-vs-userland
+- In-depth module patterns: http://bites.goodeggs.com/posts/export-this/
+- Substack on writing modules: http://substack.net/how_I_write_modules
+
+
+---
+
+
 Modules 101
 ===========
 

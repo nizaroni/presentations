@@ -144,6 +144,67 @@ console.log(kirbyDance(4)); // "<('.'<) (>'.')> <('.'<) (>'.')>"
 ---
 
 
+Module basics
+-------------
+
+Before coding, let's go over some basics.
+
+----
+
+Module basics
+-------------
+
+A *module* is a file that contains a piece of code (ideally small and self-contained) that can be pulled into a program.
+
+----
+
+Module basics
+-------------
+
+In Node.js, programs use the `require()` function to pull in modules.
+
+```js
+// Your program
+
+var thing = require('./thing');
+```
+
+----
+
+Module basics
+-------------
+
+Modules use `exports` or `module.exports` to make things available.
+
+```js
+// thing.js module
+
+function thing () {
+    // do things
+}
+
+module.exports = thing;
+```
+
+----
+
+Module basics
+-------------
+
+The things you make available can be anything that you can store in a JavaScript variable!
+
+- objects
+- functions
+- prototypes (i.e. constructor/class equivalent in JavaScript)
+- arrays
+- numbers
+- strings
+- whatever!
+
+
+---
+
+
 Let's get to coding...
 ----------------------
 

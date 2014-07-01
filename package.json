@@ -1,0 +1,15 @@
+{
+  "name": "presentations",
+  "description": "Presentations by me, powered by reveal.js.",
+  "version": "0.0.0",
+  "author": "Nizar Khalife Iglesias <khalifenizar@gmail.com>",
+  "bugs": {
+    "url": "https://github.com/khalifenizar/presentations/issues"
+  },
+  "homepage": "https://github.com/khalifenizar/presentations",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/khalifenizar/presentations.git"
+  }
+}

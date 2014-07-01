@@ -347,6 +347,139 @@ console.log(stuff.do('thing'));  // "Stuff done with thing!"
 ---
 
 
+Anti-patterns
+------------
+
+Some things to avoid when you are first starting to write modules.
+
+
+---
+
+
+What's wrong with this module?
+------------------------------
+
+```js
+// hello.js
+console.log('Hello world!');
+```
+
+----
+
+Side-effects
+------------
+
+It does stuff automatically when requiring it. We call this a side-effect.
+
+```js
+// Your program
+require('./hello'); // Logs "Hello world!"
+```
+
+----
+
+Side-effects
+------------
+
+Your modules destined for `npm` should expose functionality via `exports` and only do actual work when the user invokes the functionality.
+
+----
+
+Side-effects
+------------
+
+By "actual work" I mean:
+
+- Logging to `stdout` or `stderr` (i.e. `console.log()` and family)
+- Writing or reading the file system
+- Connecting, writing or reading to/from databases
+- HTTP requests
+- DOM operations (on browsers)
+- Any other expensive computation
+
+----
+
+Side-effects
+------------
+
+Here's a `hello` module with no side-effects:
+
+```js
+// hello.js
+
+function hello () {
+    console.log('Hello world!');
+}
+
+module.exports = hello;
+```
+
+
+---
+
+
+What's wrong with this module?
+------------------------------
+
+```js
+// hello.js
+
+hello = function () {
+    console.log('Hello world!');
+};
+```
+
+----
+
+Global variables
+----------------
+
+It pollutes the global namespace with a global variable `hello`.
+
+```js
+// Your program
+
+require('./hello');
+
+hello();
+```
+
+----
+
+Global variables
+----------------
+
+Your modules should use local variables and again use `exports` to expose functionality.
+
+```js
+// hello.js
+
+var hello = function () {
+    console.log('Hello world!');
+};
+
+module.exports = hello;
+```
+
+----
+
+Global variables
+----------------
+
+This way other progams can use them in the manner of their choosing.
+
+```js
+// Your program
+
+var i_can_call_this_whatever_i_like = require('./hello');
+
+i_can_call_this_whatever_i_like();
+```
+
+
+---
+
+
 Now let's get to coding...
 --------------------------
 

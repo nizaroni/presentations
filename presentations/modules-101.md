@@ -93,7 +93,7 @@ Two weeks ago I had *zero* modules in `npm`.
 It's really really easy
 -----------------------
 
-Now I have [two whole modules](https://www.npmjs.org/~khalifenizar)!
+Now I have [one whole module](https://www.npmjs.org/~khalifenizar) and another one almost done!
 
 ----
 

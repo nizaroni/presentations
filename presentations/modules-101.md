@@ -113,5 +113,36 @@ That's right. You. Me. Us.
 ---
 
 
+<('.'<) (>'.')> <('.'<)
+-----------------------
+
+Who knows what this is?
+
+
+---
+
+
+kirby-dance
+-----------
+
+We are making it.
+
+----
+
+kirby-dance
+-----------
+
+Here's what I want it to look like:
+
+```js
+var kirbyDance = require('kirby-dance');
+
+console.log(kirbyDance(4)); // "<('.'<) (>'.')> <('.'<) (>'.')>"
+```
+
+
+---
+
+
 Let's get to coding...
 ----------------------

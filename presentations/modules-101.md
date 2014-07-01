@@ -205,6 +205,93 @@ The things you make available can be anything that you can store in a JavaScript
 ---
 
 
+require
+-------
+
+The `require()` function can pull in modules from three different places.
+
+----
+
+require
+-------
+
+[Node core](http://nodejs.org/api/):
+
+```js
+var crypto = require('crypto'),
+    http = require('http'),
+    fs = require('fs')
+;
+```
+
+----
+
+require
+-------
+
+Files and folders (automatically adds the `.js` extension):
+
+```js
+var thing = require('./thing'),                // ./thing.js
+    arrayStuff = require('./stuff/array'),     // ./stuff/array.js
+    stuff = require('./stuff'),                // ./stuff/index.js
+    up = require('../up'),                     // ../up.js
+    absolute = require('/usr/nizar/absolute')  // /usr/nizar/absolute.js
+;
+```
+
+----
+
+require
+-------
+
+The `node_modules` directory (where `npm` puts modules):
+
+```bash
+npm install moment
+npm install chalk
+```
+
+```js
+var moment = require('moment'),
+    chalk = require('chalk')
+;
+```
+
+----
+
+require
+-------
+
+The `require()` function caches the value of `module.exports`.
+
+```js
+// thing.js
+
+var thing = {};
+thing.greeting = 'o hai';
+
+module.exports = thing;
+```
+
+```js
+// Your program
+
+var thing1,
+    thing2
+;
+
+thing1 = require('./thing');
+thing1.greeting = 'Hello, sir.';
+
+thing2 = require('./thing');
+console.log(thing2.greeting); // "Hello, sir."
+```
+
+
+---
+
+
 Let's get to coding...
 ----------------------
 

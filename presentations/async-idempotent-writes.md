@@ -498,6 +498,127 @@ The order doesn't matter either. All three problems are considered!
 ---
 
 
+Inserts with `upsert`
+---------------------
+
+So far we've only discussed updates. The document needs to be inserted into the collection somehow!
+
+----
+
+Inserts with `upsert`
+---------------------
+
+Our system was stateless, though. We didn't want to have to worry about if it was inserted or not when we were making our writes.
+
+----
+
+Inserts with `upsert`
+---------------------
+
+The `upsert` option helped us in this regard. It allowed us to `update` or `insert` as the case may be:
+
+```js
+db.matches.update(
+    { id: 9999 },
+    { $set: { ... } },
+    { upsert: true }
+);
+```
+
+----
+
+Inserts with `upsert`
+---------------------
+
+There were a couple of caveats though...
+
+----
+
+Inserts with `upsert`
+---------------------
+
+For one thing, you have to make sure you write any data you are using to query by or you will get duplicates *on every write*.
+
+----
+
+Inserts with `upsert`
+---------------------
+
+I got bit by this plenty of times with the `language` field:
+
+```js
+db.matches.update(
+    {
+        language: 'es',
+        id: 9999
+    },
+    { $set: {
+        language: 'es',  // forget this at your peril
+        id: 9999,
+        ...
+    }},
+    { upsert: true }
+);
+```
+
+----
+
+Inserts with `upsert`
+---------------------
+
+Unfortunately, `upsert` doesn't play well with the `processed` pattern.
+
+----
+
+Inserts with `upsert`
+---------------------
+
+Who can tell me why?
+
+```js
+db.teams.update(
+    {
+        id: 9999,
+        processedHistory: { $nin: [ 'south-africa-2010' ] }
+    }, {
+        $inc: { championshipWins: 1 },
+        $addToSet: { processedHistory: 'south-africa-2010' }
+    },
+    { upsert: true }
+);
+```
+
+----
+
+Inserts with `upsert`
+---------------------
+
+If there isn't a document with `id` `9999` and without `south-africa-2010`, it will just create one. *Every single time*.
+
+```js
+db.teams.update(
+    {
+        id: 9999,
+        processedHistory: { $nin: [ 'south-africa-2010' ] }
+    }, {
+        $inc: { championshipWins: 1 },
+        $addToSet: { processedHistory: 'south-africa-2010' }
+    },
+    { upsert: true }
+);
+```
+
+----
+
+Inserts with `upsert`
+---------------------
+
+That isn't so great with problem #2. A document has to be inserted before a `processed` pattern write will work.
+
+
+---
+
+
 Async Idempotent Writes
 =======================
 

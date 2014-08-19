@@ -255,6 +255,29 @@ Now it's time for some $5 words.
 ---
 
 
+Asynchronous
+------------
+
+We all know this one.
+
+----
+
+Asynchronous
+------------
+
+Asynchronous things happen in the background, take a variable amount of time and finish in unpredictable order.
+
+----
+
+Asynchronous
+------------
+
+Our writes happen in different chunks, at any time and in unpredictable order, so our writes are definitely *asynchronous*.
+
+
+---
+
+
 Async Idempotent Writes
 =======================
 

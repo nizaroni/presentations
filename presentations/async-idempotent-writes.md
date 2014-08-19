@@ -409,6 +409,95 @@ The hidden advantage of this approach was that we could safely pull object data 
 ---
 
 
+The `processed` pattern
+-----------------------
+
+The `processed` pattern is a way I devised for documents to keep update state internally.
+
+----
+
+The `processed` pattern
+-----------------------
+
+There may be better ways to achieve this, like having a dedicated aggregation pipeline worker to crunch numbers for you.
+
+----
+
+The `processed` pattern
+-----------------------
+
+It consists of having a field in the document indicates which things it's already processed. In our case the processed things were past World Cups:
+
+```js
+// team document
+{
+    id: 9999,
+    name: 'Spain'
+    championshipWins: 1,
+    processedHistory: [
+        'brasil-2014',
+        'south-africa-2010',
+        'germany-2006'
+    ]
+}
+```
+
+----
+
+The `processed` pattern
+-----------------------
+
+Now we can construct an *idempotent* write using that field with a [`$nin`](http://docs.mongodb.org/manual/reference/operator/query/nin/#op._S_nin) as part of our query:
+
+```js
+db.teams.update(
+    {
+        id: 9999,
+        processedHistory: { $nin: [ 'south-africa-2010' ] }
+    }, {
+        $inc: { championshipWins: 1 },
+        $addToSet: { processedHistory: 'south-africa-2010' }
+    }
+);
+```
+
+----
+
+The `processed` pattern
+-----------------------
+
+In other words, we are incrementing `championshipWins` only if `south-africa-2010` isn't in `processedHistory`.
+
+```js
+db.teams.update(
+    {
+        id: 9999,
+        processedHistory: { $nin: [ 'south-africa-2010' ] }
+    }, {
+        $inc: { championshipWins: 1 },
+        $addToSet: { processedHistory: 'south-africa-2010' }
+    }
+);
+```
+
+----
+
+The `processed` pattern
+-----------------------
+
+This write should only actually modify the document once! `Idempotence`, baby!
+
+----
+
+The `processed` pattern
+-----------------------
+
+The order doesn't matter either. All three problems are considered!
+
+
+---
+
+
 Async Idempotent Writes
 =======================
 

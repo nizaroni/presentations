@@ -278,6 +278,40 @@ Our writes happen in different chunks, at any time and in unpredictable order, s
 ---
 
 
+Idempotent
+----------
+
+An operation is said to be [*idempotent*](http://en.wikipedia.org/wiki/Idempotence) if it can be applied multiple times without changing the result beyond the first application.
+
+----
+
+Idempotent
+----------
+
+An easy example of this concept is a `remove` operation:
+
+```js
+db.collection.remove({ _id: 9999 });
+```
+
+----
+
+Idempotent
+----------
+
+No matter how many times you `remove` document `9999`, you will get the same result: a collection without document `9999`.
+
+----
+
+Idempotent
+----------
+
+To handle our redundant writes, we need to make sure that our writes are idempotent just like a `remove` would be.
+
+
+---
+
+
 Async Idempotent Writes
 =======================
 

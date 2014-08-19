@@ -10,7 +10,7 @@ By [Nizar](https://github.com/khalifenizar).
 Async Idempotent Writes
 =======================
 
-I'm going to talk about a project that presented me with certain problems.
+I'm going to talk about an API project that presented me with certain problems.
 
 ----
 
@@ -24,7 +24,7 @@ After we get an understanding of the problems, we will talk about what I mean by
 Async Idempotent Writes
 =======================
 
-Finally, we will see how I managed to solve those problems.
+Finally, we will see some of the patterns I used to solve those problems.
 
 
 ---

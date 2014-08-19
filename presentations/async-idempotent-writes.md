@@ -301,6 +301,32 @@ Idempotent
 
 No matter how many times you `remove` document `9999`, you will get the same result: a collection without document `9999`.
 
+```js
+db.collection.remove({ _id: 9999 });
+```
+
+----
+
+Idempotent
+----------
+
+An example of an operation that *isn't* idemopotent would be `insert`:
+
+```js
+db.collection.insert({ name: 'Nizar' });
+```
+
+----
+
+Idempotent
+----------
+
+If you run an identical insert operation `10` times, you will get `10` distinct records all with the same data (but different `_id`).
+
+```js
+db.collection.insert({ name: 'Nizar' });
+```
+
 ----
 
 Idempotent

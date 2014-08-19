@@ -375,7 +375,35 @@ db.matches.update(
 Updates with `$set`
 -------------------
 
-The hidden advantage of this approach was that we safely pulled updated object data, like last-minute `stadium` changes.
+When you use `$set`, you can have documents composed from multiple different writes that are concerned with different data fields.
+
+----
+
+Updates with `$set`
+-------------------
+
+Additionally, the order in which you perform the writes doesn't matter as long as you use *dot notation* for the sub-documents.
+
+----
+
+Updates with `$set`
+-------------------
+
+These writes are also *idempotent* because no matter how many times you `$set` these fields, the end result is a document with the set fields containing those values.
+
+----
+
+Updates with `$set`
+-------------------
+
+Therefore this pattern helps us with **problems #1, #2 and #3**.
+
+----
+
+Updates with `$set`
+-------------------
+
+The hidden advantage of this approach was that we could safely pull object data updates from the source, like last-minute `stadium` changes.
 
 
 ---

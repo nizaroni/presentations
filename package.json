@@ -16,6 +16,7 @@
     "url": "https://github.com/khalifenizar/presentations.git"
   },
   "scripts": {
-    "start": "reveal-md presentations/"
+    "start": "reveal-md presentations/",
+    "beige": "reveal-md presentations/ --theme beige"
   }
 }

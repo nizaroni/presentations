@@ -618,6 +618,13 @@ That isn't so great with problem #2. A document has to be inserted before a `pro
 
 ---
 
+Async Idempotent Writes
+=======================
+
+Questions
+---------
+
+----
 
 Async Idempotent Writes
 =======================

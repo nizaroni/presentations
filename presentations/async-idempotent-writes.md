@@ -312,6 +312,75 @@ To handle our redundant writes, we need to make sure that our writes are idempot
 ---
 
 
+Patterns
+--------
+
+Let's go into some of the patterns we used to solve our problems.
+
+
+---
+
+
+Updates with `$set`
+-------------------
+
+First and foremost, we needed to perform our updates with surgical precision using [`$set`](http://docs.mongodb.org/manual/reference/operator/update/set/#up._S_set).
+
+----
+
+Updates with `$set`
+-------------------
+
+This way, a write would only modify what it cares about and nothing else:
+
+```js
+db.matches.update(
+    { id: 9999 },
+    { $set: {
+        id: 9999,
+        status: 'scheduled',
+        startDate: '2014-06-13T18:00Z',
+        stadium: { ... },
+        teams: {
+            home: { ... },
+            away: { ... }
+        },
+        ...
+    }}
+);
+```
+
+----
+
+Updates with `$set`
+-------------------
+
+We often had to break apart sub-document properties using [*dot notation*](http://docs.mongodb.org/manual/core/document/#dot-notation) for even greater precision:
+
+```js
+db.matches.update(
+    { id: 9999 },
+    { $set: {
+        'teams.home.roster': { ... },
+        'teams.home.formation': { ... },
+        'teams.away.roster': { ... },
+        'teams.away.formation': { ... },
+        ...
+    }}
+);
+```
+
+----
+
+Updates with `$set`
+-------------------
+
+The hidden advantage of this approach was that we safely pulled updated object data, like last-minute `stadium` changes.
+
+
+---
+
+
 Async Idempotent Writes
 =======================
 

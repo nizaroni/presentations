@@ -26,6 +26,13 @@ Async Idempotent Writes
 
 Finally, we will see some of the patterns I used to solve those problems.
 
+----
+
+Async Idempotent Writes
+=======================
+
+Please interrupt me if you have any questions or if I say something stupid!
+
 
 ---
 

@@ -310,7 +310,7 @@ db.collection.remove({ _id: 9999 });
 Idempotent
 ----------
 
-An example of an operation that *isn't* idemopotent would be `insert`:
+An example of an operation that *isn't* idempotent would be `insert`:
 
 ```js
 db.collection.insert({ name: 'Nizar' });

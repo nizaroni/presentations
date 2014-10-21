@@ -25,3 +25,17 @@ Node.js Streams
 ===============
 
 Please interrupt me if you have any questions or if I say something totally wrong!
+
+----
+
+Node.js Streams
+===============
+
+How many of you are new to Node.js?
+
+----
+
+Node.js Streams
+===============
+
+How many of you have used streams before?

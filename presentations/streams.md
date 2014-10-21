@@ -282,4 +282,4 @@ readbleStream
 How streams work
 ----------------
 
-So a stream pipeline takes data from a source, *transforms* it and/or otherwise *acts upon* it.
+So a stream pipeline takes *data* from a source, *transforms* it and/or otherwise *acts upon* it.

@@ -190,3 +190,96 @@ What we've got here is a *pipeline*: functionality composed together by piping.
 ```bash
 $ history | grep 'git diff' | pbcopy
 ```
+
+
+---
+
+
+How streams work
+----------------
+
+Back in JavaScript-land, we can also build *pipelines*.
+
+----
+
+How streams work
+----------------
+
+Instead of using commands and the pipe character `|`, we build them using stream objects and the `.pipe()` method:
+
+```js
+readbleStream.pipe(writableStream);
+```
+
+----
+
+How streams work
+----------------
+
+It starts with a *readable* stream providing a flow of data:
+
+```js
+readbleStream;    // has some cool data
+```
+
+----
+
+How streams work
+----------------
+
+Then a *writable* stream can receive that data through the `.pipe()` method:
+
+```js
+readbleStream    // has some cool data
+    .pipe( writableStream )    // gets the cool data written to it
+;
+```
+
+----
+
+How streams work
+----------------
+
+If the *writable* stream is really a *transform* stream (i.e. it is also *readable*), the *pipeline* can continue:
+
+```js
+readbleStream    // has some cool data
+    .pipe( transformStream )    // transforms the cool data written to it
+    .pipe( writableStream )     // gets transformed cool data written to it
+;
+```
+
+----
+
+How streams work
+----------------
+
+This works because `.pipe()` returns a stream:
+
+```js
+readbleStream
+    .pipe( transformStream )    // returns a stream
+    .pipe( writableStream )     // returns a stream
+;
+```
+
+----
+
+How streams work
+----------------
+
+Specifically, `.pipe()` returns the stream that is sent as the argument to the method call.
+
+```js
+readbleStream
+    .pipe( transformStream )    // returns `transformStream`
+    .pipe( writableStream )     // returns `writableStream`
+;
+```
+
+----
+
+How streams work
+----------------
+
+So a stream pipeline takes data from a source, *transforms* it and/or otherwise *acts upon* it.

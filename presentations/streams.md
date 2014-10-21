@@ -45,27 +45,27 @@ How many of you have used streams before?
 
 
 What's a stream?
-================
+----------------
 
 Streams are Node.js' unified interface for I/O.
 
 ----
 
 What's a stream?
-================
+----------------
 
 They are [part of Node.js core](http://nodejs.org/api/stream.html), Node's standard library.
 
 ----
 
 What's a stream?
-================
+----------------
 
 A stream can be *readable* (provides data), *writable* (expects data) or *both*.
 
 ----
 
 What's a stream?
-================
+----------------
 
 They are designed to emulate Unix in that streams can be *piped* together to compose more complex operations.

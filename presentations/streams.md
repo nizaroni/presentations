@@ -227,11 +227,11 @@ readbleStream;    // has some cool data
 How streams work
 ----------------
 
-Then a *writable* stream can receive that data through the `.pipe()` method:
+Then a *writable* stream can receive that data through the `.pipe()` method and *act upon* it:
 
 ```js
 readbleStream    // has some cool data
-    .pipe( writableStream )    // gets the cool data written to it
+    .pipe( writableStream )    // does stuff with the cool data
 ;
 ```
 
@@ -240,12 +240,12 @@ readbleStream    // has some cool data
 How streams work
 ----------------
 
-If the *writable* stream is really a *transform* stream (i.e. it is also *readable*), the *pipeline* can continue:
+If desired, *transform* streams (i.e. both *readable* and *writable*) can be piped in between to modify the data in some way:
 
 ```js
 readbleStream    // has some cool data
     .pipe( transformStream )    // transforms the cool data written to it
-    .pipe( writableStream )     // gets transformed cool data written to it
+    .pipe( writableStream )     // does stuff with transformed cool data
 ;
 ```
 

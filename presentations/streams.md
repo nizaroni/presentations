@@ -18,3 +18,10 @@ Node.js Streams
 ===============
 
 Then let's do some [`stream-adventure`](https://www.npmjs.org/package/stream-adventure)!
+
+----
+
+Node.js Streams
+===============
+
+Please interrupt me if you have any questions or if I say something totally wrong!

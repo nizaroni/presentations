@@ -439,6 +439,109 @@ The occasional beer doesn't hurt either.
 ---
 
 
+Streams are good
+----------------
+
+With that example under our belt, we can begin to see a couple of reasons why streams are nice to work with.
+
+
+---
+
+
+Separation of concerns
+----------------------
+
+Streams help separate code concerns.
+
+----
+
+Separation of concerns
+----------------------
+
+We saw in the example that when we need to perform a transformation or other action with our data we pipe a stream:
+
+```js
+fs.createReadStream(__dirname + '/sentences.csv')
+    .pipe(split(','))
+    .pipe(append({ before: ' ' }))
+    .pipe(process.stdout)
+;
+```
+
+----
+
+Separation of concerns
+----------------------
+
+Each action is performed by its own module that can be tested, improved and debugged separately.
+
+```js
+fs.createReadStream(__dirname + '/sentences.csv')
+    .pipe(split(','))
+    .pipe(append({ before: ' ' }))
+    .pipe(process.stdout)
+;
+```
+
+----
+
+Separation of concerns
+----------------------
+
+It's also pretty clear what each stream is intending to do, making it easy to reason about what the code is doing as a whole.
+
+```js
+fs.createReadStream(__dirname + '/sentences.csv')
+    .pipe(split(','))
+    .pipe(append({ before: ' ' }))
+    .pipe(process.stdout)
+;
+```
+
+
+---
+
+
+Composability
+-------------
+
+By a similar token, streams help make your code more composable.
+
+----
+
+Composability
+-------------
+
+The unified interface makes it easy to `.pipe()` in a bunch of streams to that work together to perform higher-level functionality, again, like in our example:
+
+```js
+fs.createReadStream(__dirname + '/sentences.csv')
+    .pipe(split(','))
+    .pipe(append({ before: ' ' }))
+    .pipe(process.stdout)
+;
+```
+
+
+---
+
+
+Lots of streams in the wild
+---------------------------
+
+A lot of modules in Node.js core and npm are already streams.
+
+----
+
+Lots of streams in the wild
+---------------------------
+
+This doesn't have to do with any intrinsic quality of streams as an interface, but you can take advantage of it nonetheless by using and writing more streams.
+
+
+---
+
+
 Node.js Streams
 ===============
 

@@ -17,4 +17,4 @@ Let's go over the basics of what streams are, why they can be good and why they 
 Node.js Streams
 ===============
 
-Then let's so some [`stream-adventure`](https://www.npmjs.org/package/stream-adventure)!
+Then let's do some [`stream-adventure`](https://www.npmjs.org/package/stream-adventure)!

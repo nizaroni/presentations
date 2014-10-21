@@ -283,3 +283,154 @@ How streams work
 ----------------
 
 So a stream pipeline takes *data* from a source, *transforms* it and/or otherwise *acts upon* it.
+
+
+---
+
+
+Code example
+------------
+
+Now let's see a code example for CSV parsing.
+
+
+----
+
+Code example
+------------
+
+First let's start with a `sentences.csv` file:
+
+```csv
+I,like,pizza.,,,
+I,also,like,cookies.,,
+The,occasional,beer,doesn't,hurt,either.
+```
+
+----
+
+Code example
+------------
+
+Step 1: Open a readable stream of the file using the `fs` module:
+
+```js
+var fs = require('fs');
+
+fs.createReadStream(__dirname + '/sentences.csv');
+```
+
+----
+
+Code example
+------------
+
+[Step 2](examples/streams/csv-step2.js): Now that we have the data we need to decide how to *act upon* it with a writable stream.
+
+----
+
+Code example
+------------
+
+[Step 2](examples/streams/csv-step2.js): Let's go with our basic `process.stdout` to write to the console:
+
+```js
+// examples/streams/csv-step2.js
+var fs = require('fs');
+
+fs.createReadStream(__dirname + '/sentences.csv')
+    .pipe(process.stdout)
+;
+```
+
+----
+
+Code example
+------------
+
+Here's what [Step 2](examples/streams/csv-step2.js) gives us:
+
+```bash
+$ node examples/streams/csv-step2.js
+I,like,pizza.,,,
+I,also,like,cookies.,,
+The,occasional,beer,doesn't,hurt,either.
+```
+
+----
+
+Code example
+------------
+
+[Step 3](examples/streams/csv-step3.js): Next up is parsing the comma-separated format, so we need to *transform* the data now.
+
+----
+
+Code example
+------------
+
+[Step 3](examples/streams/csv-step3.js): Let's use the [`split`](https://www.npmjs.org/package/split) module from npm to split by comma:
+
+```js
+var split = require('split');
+var fs = require('fs');
+
+fs.createReadStream(__dirname + '/sentences.csv')
+    .pipe(split(','))
+    .pipe(process.stdout)
+;
+```
+
+----
+
+Code example
+------------
+
+Here's what [Step 3](examples/streams/csv-step3.js) leaves us with:
+
+```bash
+$ node examples/streams/csv-step3.js
+Ilikepizza.
+Ialsolikecookies.
+Theoccasionalbeerdoesn'thurteither.
+```
+
+----
+
+Code example
+------------
+
+[Step 4](examples/streams/csv-step4.js): We extracted the words from the commas but we want our words to be separated by spaces.
+
+----
+
+Code example
+------------
+
+[Step 4](examples/streams/csv-step4.js): Let's use the [`appendage`](https://www.npmjs.org/package/appendage) module from npm to prepend a space:
+
+```js
+var append = require('appendage');
+var split = require('split');
+var fs = require('fs');
+
+fs.createReadStream(__dirname + '/sentences.csv')
+    .pipe(split(','))
+    .pipe(append({ before: ' ' }))
+    .pipe(process.stdout)
+;
+```
+
+----
+
+Code example
+------------
+
+[Step 4](examples/streams/csv-step4.js) finally leaves us with something nice to read:
+
+```bash
+$ node examples/streams/csv.js
+ I like pizza.
+I also like cookies.
+The occasional beer doesn't hurt either.
+```

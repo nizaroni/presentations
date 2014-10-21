@@ -61,7 +61,14 @@ They are [part of Node.js core](http://nodejs.org/api/stream.html), Node's stand
 What's a stream?
 ----------------
 
-A stream can be *readable* (provides data), *writable* (expects data) or *both*.
+A stream can be *readable* (provides data), *writable* (expects data) or *both* (called a *transform* stream).
+
+----
+
+What's a stream?
+----------------
+
+Just like when you stream a video, Node.js streams send, receive and operate on data in small chunks at a time.
 
 ----
 

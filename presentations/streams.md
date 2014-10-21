@@ -542,6 +542,108 @@ This doesn't have to do with any intrinsic quality of streams as an interface, b
 ---
 
 
+Readable streams
+----------------
+
+To implement a readable stream you can either use directly or extend the `Readable` prototype in the `stream` module:
+
+```js
+var stream = require('stream');
+
+var readableStream = new stream.Readable();
+```
+
+----
+
+Readable streams
+----------------
+
+Then use the `.push()` method of your new stream to give it data:
+
+```js
+var stream = require('stream');
+
+var readableStream = new stream.Readable();
+readableStream.push('pew ');
+readableStream.push('pow\n');
+```
+
+----
+
+Readable streams
+----------------
+
+Finally call `.push()` with `null` when there is no more data and pipe it:
+
+```js
+var stream = require('stream');
+
+var readableStream = new stream.Readable();
+readableStream.push('pew ');
+readableStream.push('pow\n');
+readableStream.push(null);
+
+readableStream.pipe(process.stdout);
+```
+
+----
+
+Readable streams
+----------------
+
+While `.pipe()` normally does this for you, you can consume data directly from a readable stream by first listening for the `readable` event:
+
+```js
+var fs = require('fs');
+
+var fileStream = fs.createReadStream(__dirname + '/sentences.csv');
+fileStream.on('readable', function () {});
+```
+
+The `readable` event is emitted when the stream has a small chunk of data ready for reading.
+
+----
+
+Readable streams
+----------------
+
+The `readable` event is emitted when the stream has a small chunk of data ready for reading. To read that chunk, call the `.read()` method *inside* the `readable` callback:
+
+```js
+var fs = require('fs');
+
+var fileStream = fs.createReadStream(__dirname + '/sentences.csv');
+fileStream.on('readable', function () {
+    console.log('Chunk:', fileStream.read());
+});
+```
+
+----
+
+Readable streams
+----------------
+
+What we get from `.read()` is a `Buffer` object, Node's way of representing arbitrary data. In this case we know it's a string so let's convert it:
+
+```js
+var fs = require('fs');
+
+var fileStream = fs.createReadStream(__dirname + '/sentences.csv');
+fileStream.on('readable', function () {
+    console.log('Chunk:', fileStream.read().toString());
+});
+```
+
+----
+
+Readable streams
+----------------
+
+Since data is read in small chunks, the `readable` event can (and likely will) be emitted several times: once for each chunk.
+
+---
+
+
 Node.js Streams
 ===============
 

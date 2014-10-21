@@ -641,6 +641,48 @@ Readable streams
 
 Since data is read in small chunks, the `readable` event can (and likely will) be emitted several times: once for each chunk.
 
+
+---
+
+
+Streams are good, the sequel
+----------------------------
+
+Which brings us to a couple more cool benefits of streams.
+
+
+---
+
+
+Resource efficiency
+-------------------
+
+Since streams deal in small chunks of data at a time, they use resources (namely, memory) way more efficiently.
+
+----
+
+Resource efficiency
+-------------------
+
+This enables stream interfaces to handle extremely large data sets (such as a huge file or a database with a huge amount of records) very well without consuming all of your system's memory.
+
+
+---
+
+
+Less waiting
+------------
+
+Dealing with small chunks also allows you to start acting upon and responding to data more quickly.
+
+----
+
+Less waiting
+------------
+
+You can start building and sending your JSON response or HTML data to the client sooner.
+
+
 ---
 
 

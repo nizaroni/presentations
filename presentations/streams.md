@@ -68,7 +68,7 @@ A stream can be *readable* (provides data), *writable* (expects data) or *both* 
 What's a stream?
 ----------------
 
-Just like when you stream a video, Node.js streams send, receive and operate on data in small chunks at a time.
+Just like when you stream a video, Node.js streams send, receive and operate on data in *small chunks* at a time.
 
 ----
 

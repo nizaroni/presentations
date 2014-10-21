@@ -434,3 +434,33 @@ $ node examples/streams/csv.js
 I also like cookies.
 The occasional beer doesn't hurt either.
 ```
+
+
+---
+
+
+Node.js Streams
+===============
+
+Questions
+---------
+
+----
+
+Node.js Streams
+===============
+
+Further reading
+---------------
+
+- Deeper dive into streams by Substack: https://github.com/substack/stream-handbook
+- Good stuff about back pressure by Tim Caswell: http://howtonode.org/streams-explained
+- More examples and differences between Streams 1, 2 and 3 by Bryce Baril: http://brycebaril.github.io/streams2-presentation/
+
+----
+
+Node.js Streams
+===============
+
+[Thanks for listening!](https://github.com/khalifenizar)
+--------------------------------------------------------

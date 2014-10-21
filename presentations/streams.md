@@ -325,7 +325,7 @@ fs.createReadStream(__dirname + '/sentences.csv');
 Code example
 ------------
 
-[Step 2](examples/streams/csv-step2.js): Now that we have the data we need to decide how to *act upon* it with a writable stream.
+[Step 2](examples/streams/csv-step2.js): Now that we have our data, we need to decide how to *act upon* it with a writable stream.
 
 ----
 

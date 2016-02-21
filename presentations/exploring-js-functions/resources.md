@@ -5,3 +5,5 @@ Resources
 ---------
 
 ### Slides ###
+
+https://speakerdeck.com/khalifenizar/advanced-topics-of-javascript-exploring-functions

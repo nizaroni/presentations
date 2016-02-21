@@ -1,6 +1,11 @@
 Advanced Topics of JavaScript: Exploring Functions
 ==================================================
 
+A talk about JavaScript function gotchas.
+
+First delivered at [WordCamp Miami 2016](https://2016.miami.wordcamp.org/).
+
+
 Resources
 ---------
 
